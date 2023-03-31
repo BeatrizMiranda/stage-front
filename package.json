@@ -1,32 +1,98 @@
 {
-  "name": "stage-front",
+  "name": "dona-de-mim-dashboard",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,tsx,ts}",
+      "!src/index.tsx",
+      "!src/**/types.{d.ts,ts,tsx}",
+      "!src/types/errorCodes.d.ts",
+      "!src/**/*.stories.{ts,tsx,js,jsx}",
+      "!src/types/*.{ts,tsx,js,jsx}",
+      "!src/react-app-env.d.ts"
+    ]
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.23",
-    "@types/react": "^18.0.31",
-    "@types/react-dom": "^18.0.11",
+    "axios": "^0.27.2",
+    "date-fns": "^2.29.3",
+    "focus-formik-error": "^1.1.0",
+    "formik": "^2.2.9",
+    "http-status-codes": "^2.2.0",
+    "icomoon-react": "^3.0.0",
+    "is-plain-object": "^5.0.0",
+    "jest-styled-components": "^7.1.1",
+    "joi-cpf-cnpj": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^5.3.1",
+    "styled-media-query": "^2.1.2",
+    "styled-system": "^5.1.5",
+    "swr": "^2.0.0",
+    "typescript": "^4.7.3",
+    "validations-br": "^1.2.0",
+    "web-vitals": "^2.1.4",
+    "workbox-background-sync": "^5.1.4",
+    "workbox-broadcast-update": "^5.1.4",
+    "workbox-cacheable-response": "^5.1.4",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-google-analytics": "^5.1.4",
+    "workbox-navigation-preload": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-range-requests": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4",
+    "workbox-streams": "^5.1.4",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.4.0",
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^29.0.1",
+    "@types/joi": "^17.2.3",
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^16.11.39",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-input-mask": "2.0.4",
+    "@types/styled-components": "^5.1.25",
+    "@types/styled-system": "^5.1.15",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "esbuild": "^0.15.14",
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-styled-components-a11y": "^1.0.0",
+    "jest-mock-axios": "^4.6.1",
+    "msw": "^1.2.1",
+    "plop": "^3.1.1",
+    "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "generate": "yarn plop --plopfile generators/plopfile.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "test": "react-scripts test --watchAll=false --coverage",
+    "test:watch": "react-scripts test --watchAll",
+    "eject": "react-scripts eject",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint:fix": "npm run lint -- --fix"
   },
   "browserslist": {
     "production": [
@@ -38,6 +104,26 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "npm": ">=8.11.0",
+    "node": ">=16.14.0"
+  },
+  "resolutions": {
+    "@svgr/webpack": "^6.4.0",
+    "loader-utils": "^2.0.3"
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   }
 }
